@@ -19,6 +19,8 @@ enum Strategy {
   Facebook = "oauth_facebook",
 }
 
+// 1:11:09
+
 const Page = () => {
   useWarmUpBrowser(); // Quickens android browser during login
   const router = useRouter();
