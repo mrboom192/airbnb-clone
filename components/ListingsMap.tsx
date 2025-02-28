@@ -1,5 +1,5 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { memo } from "react";
 import { Marker } from "react-native-maps";
 import { defaultStyles } from "@/constants/Styles";
 import { ListingGeo } from "@/interfaces/listingGeo";
@@ -19,7 +19,8 @@ const INITIAL_REGION = {
   longitudeDelta: 9,
 };
 
-const ListingsMap = ({ listings }: Props) => {
+// Memoize map component to prevent it from rerendering, making it alot faster
+const ListingsMap = memo(({ listings }: Props) => {
   const router = useRouter();
 
   const onMarkerSelected = (item: ListingGeo) => {
@@ -86,7 +87,7 @@ const ListingsMap = ({ listings }: Props) => {
       </MapView>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {
